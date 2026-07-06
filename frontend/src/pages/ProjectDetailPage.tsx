@@ -5,7 +5,6 @@ import type { Project, ProjectStatus } from "@/types/project.types"
 import TasksSection from "@/components/tasks/TasksSection"
 import {
   statusLabels,
-  statusColors,
   priorityLabels,
   priorityColors,
 } from "@/config/projectMeta"
@@ -126,7 +125,9 @@ export default function ProjectDetailPage() {
             <Select
               items={Object.entries(statusLabels).map(([value, label]) => ({ value, label }))}
               value={project.status}
-              onValueChange={handleStatusChange}
+              onValueChange={(value) => {
+  if (value) handleStatusChange(value)
+}}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select status" />

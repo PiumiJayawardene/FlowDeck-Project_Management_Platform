@@ -20,7 +20,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import {
   Select,
@@ -141,7 +140,9 @@ export default function ProjectsPage() {
               <div className="space-y-2">
   <Label>Team</Label>
 
-  <Select value={teamId} onValueChange={setTeamId}>
+  <Select value={teamId} onValueChange={(value) => {
+  if (value) setTeamId(value)
+}}>
     <SelectTrigger>
       <SelectValue>
         {teamId
@@ -161,7 +162,9 @@ export default function ProjectsPage() {
 </div>
               <div className="space-y-2">
                 <Label>Priority</Label>
-                <Select value={priority} onValueChange={setPriority}>
+                <Select value={priority} onValueChange={(value) => {
+  if (value) setPriority(value)
+}}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>

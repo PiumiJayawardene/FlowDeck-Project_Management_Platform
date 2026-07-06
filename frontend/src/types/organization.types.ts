@@ -16,6 +16,7 @@ export interface OrganizationMember {
 export interface Organization {
   _id: string
   name: string
+  description?: string
   slug: string
   ownerId: string
   members: OrganizationMember[]

@@ -66,24 +66,25 @@ export default function Topbar() {
         </Button>
 
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 px-2">
-              <Avatar className="h-8 w-8">
-                {user?.avatarUrl && <AvatarImage src={user.avatarUrl} alt={user.name} />}
-                <AvatarFallback className="bg-primary text-primary-foreground">
-                  {initials}
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex flex-col items-start">
-                <span className="text-sm font-medium leading-none text-foreground">
-                  {user?.name}
-                </span>
-                <span className="text-xs leading-none text-muted-foreground capitalize">
-                  {user?.role}
-                </span>
-              </div>
-            </Button>
-          </DropdownMenuTrigger>
+          <DropdownMenuTrigger>
+  <Button variant="ghost" className="flex items-center gap-2 px-2">
+    <Avatar className="h-8 w-8">
+      {user?.avatarUrl && <AvatarImage src={user.avatarUrl} alt={user.name} />}
+      <AvatarFallback className="bg-primary text-primary-foreground">
+        {initials}
+      </AvatarFallback>
+    </Avatar>
+
+    <div className="flex flex-col items-start">
+      <span className="text-sm font-medium leading-none text-foreground">
+        {user?.name}
+      </span>
+      <span className="text-xs leading-none text-muted-foreground capitalize">
+        {user?.role}
+      </span>
+    </div>
+  </Button>
+</DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuItem onClick={() => fileInputRef.current?.click()}>
               <Camera className="mr-2 h-4 w-4" />

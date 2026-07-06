@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
+import type { ReactNode } from "react"
 import type { Organization } from "@/types/organization.types"
 import { getMyOrganizations } from "@/services/organizationService"
 import { useAuth } from "./AuthContext"

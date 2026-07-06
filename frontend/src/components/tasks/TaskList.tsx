@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react"
-import AttachmentList from "./AttachmentList"
+import { useState } from "react"
 import type { Task } from "@/types/task.types"
 import type { Team } from "@/types/team.types"
 import EmptyState from "@/components/EmptyState"
 import { Skeleton } from "@/components/ui/skeleton"
 import {
-  getTasksForProject,
   createTask,
   toggleSubtask,
   addSubtask,
@@ -142,7 +140,9 @@ onRefresh()
              <div className="space-y-2">
   <Label>Assignee</Label>
 
-  <Select value={assigneeId} onValueChange={setAssigneeId}>
+  <Select value={assigneeId} onValueChange={(value) => {
+  if (value) setAssigneeId(value)
+}}>
     <SelectTrigger>
       <SelectValue>
         {assigneeId
@@ -167,7 +167,9 @@ onRefresh()
 </div>
               <div className="space-y-2">
                 <Label>Priority</Label>
-                <Select value={priority} onValueChange={setPriority}>
+                <Select value={priority} onValueChange={(value) => {
+  if (value) setPriority(value)
+}}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>

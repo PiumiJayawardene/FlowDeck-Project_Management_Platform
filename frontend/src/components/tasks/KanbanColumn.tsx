@@ -1,6 +1,6 @@
 import { useDroppable } from "@dnd-kit/core"
 import type { Task } from "@/types/task.types"
-import type { KanbanColumnConfig } from "@/config/kanbanColumns"
+import type { KanbanColumnConfig } from "@/config/KanbanColumns"
 import KanbanCard from "./KanbanCard"
 
 interface KanbanColumnProps {

@@ -9,7 +9,7 @@ import {
 } from "@dnd-kit/core"
 import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core"
 import type { Task, TaskStatus } from "@/types/task.types"
-import { kanbanColumns } from "@/config/kanbanColumns"
+import { kanbanColumns } from "@/config/KanbanColumns"
 import { updateTask } from "@/services/taskService"
 import KanbanColumn from "./KanbanColumn"
 import KanbanCard from "./KanbanCard"
