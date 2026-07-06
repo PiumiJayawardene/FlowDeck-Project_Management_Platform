@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const organization_middleware_1 = require("../middleware/organization.middleware");
+const organization_controller_1 = require("../controllers/organization.controller");
+const team_controller_1 = require("../controllers/team.controller");
+const router = (0, express_1.Router)();
+router.use(auth_middleware_1.protect);
+router.post("/", organization_controller_1.createOrganization);
+router.get("/", organization_controller_1.getMyOrganizations);
+router.get("/:orgId", organization_middleware_1.requireOrgMembership, organization_controller_1.getOrganization);
+router.patch("/:orgId", organization_middleware_1.requireOrgMembership, organization_middleware_1.requireOrgAdmin, organization_controller_1.updateOrganization);
+router.post("/:orgId/invite", organization_middleware_1.requireOrgMembership, organization_middleware_1.requireOrgAdmin, organization_controller_1.inviteMember);
+router.delete("/:orgId/members/:userId", organization_middleware_1.requireOrgMembership, organization_middleware_1.requireOrgAdmin, organization_controller_1.removeMember);
+router.post("/:orgId/teams", organization_middleware_1.requireOrgMembership, team_controller_1.createTeam);
+router.get("/:orgId/teams", organization_middleware_1.requireOrgMembership, team_controller_1.getTeamsForOrg);
+exports.default = router;

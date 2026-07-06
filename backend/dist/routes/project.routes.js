@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const organization_middleware_1 = require("../middleware/organization.middleware");
+const project_middleware_1 = require("../middleware/project.middleware");
+const project_controller_1 = require("../controllers/project.controller");
+const router = (0, express_1.Router)();
+router.use(auth_middleware_1.protect);
+router.post("/organizations/:orgId/projects", organization_middleware_1.requireOrgMembership, project_controller_1.createProject);
+router.get("/organizations/:orgId/projects", organization_middleware_1.requireOrgMembership, project_controller_1.getProjectsForOrg);
+router.get("/:projectId", project_middleware_1.requireProjectAccess, project_controller_1.getProject);
+router.patch("/:projectId", project_middleware_1.requireProjectAccess, project_controller_1.updateProject);
+router.delete("/:projectId", project_middleware_1.requireProjectAccess, project_controller_1.deleteProject);
+exports.default = router;

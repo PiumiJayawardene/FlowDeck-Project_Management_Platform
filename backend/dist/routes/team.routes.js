@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const team_middleware_1 = require("../middleware/team.middleware");
+const team_controller_1 = require("../controllers/team.controller");
+const router = (0, express_1.Router)();
+router.use(auth_middleware_1.protect);
+router.get("/:teamId", team_middleware_1.requireTeamAccess, team_controller_1.getTeam);
+router.patch("/:teamId", team_middleware_1.requireTeamAccess, team_controller_1.updateTeam);
+router.delete("/:teamId", team_middleware_1.requireTeamAccess, team_controller_1.deleteTeam);
+router.post("/:teamId/members", team_middleware_1.requireTeamAccess, team_controller_1.addTeamMember);
+router.delete("/:teamId/members/:userId", team_middleware_1.requireTeamAccess, team_controller_1.removeTeamMember);
+exports.default = router;
